@@ -44,7 +44,7 @@
                     android:backgroundTint="@color/white"
                     android:fontFamily="serif-monospace"
                     android:hint="@string/phone"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
 

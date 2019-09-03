@@ -26,7 +26,7 @@ public class CompleteProfileActivity extends AppCompatActivity {
         completeProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!validatePhoneNUmber() && validateAddress()) {
+                if(validatePhoneNUmber() && validateAddress()) {
                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(intent);
                 }
