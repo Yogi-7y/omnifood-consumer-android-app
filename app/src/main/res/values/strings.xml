@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Consumer</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="sign_up_for_an_account">Sign up for an account?</string>
+    <string name="omnifood_description">Hello, we\'re Omnifood, your new premium food delivery service. We know you\'re always busy. No time for cooking. So let us take care of that, we\'re really good at it, we promise!</string>
+    <string name="get_started">Get Started</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">Email</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="register">Register</string>
+    <string name="sign_in">Sign In</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="phone">Phone</string>
+    <string name="address">Address</string>
+    <string name="submit">Submit</string>
+</resources>
