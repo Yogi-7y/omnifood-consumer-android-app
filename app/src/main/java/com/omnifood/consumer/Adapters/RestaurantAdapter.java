@@ -2,6 +2,7 @@ package com.omnifood.consumer.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,19 +14,21 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.omnifood.consumer.R;
-import com.omnifood.consumer.RestaurantMealActivity;
+import com.omnifood.consumer.Activities.RestaurantMealActivity;
 import com.omnifood.consumer.models.Restaurant;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder> {
 
-
+    private static final String TAG = "RestaurantAdapter";
     private Context context;
-    private List<Restaurant> restaurants;
+    private ArrayList<Restaurant> restaurants;
 
-    public RestaurantAdapter(Context context, List<Restaurant> restaurants) {
+    public RestaurantAdapter(Context context, ArrayList<Restaurant> restaurants) {
         this.context = context;
         this.restaurants = restaurants;
     }
@@ -39,16 +42,27 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
 
     @Override
     public void onBindViewHolder(@NonNull final RestaurantViewHolder holder, final int position) {
+        Log.d(TAG, "onBindViewHolder: called ");
+        Glide.with(context)
+                .asBitmap()
+                .load(restaurants.get(position).getRestaurantThumbnail())
+                .into(holder.restaurantThumbnail);
         holder.restaurantName.setText(restaurants.get(position).getRestaurantName());
-        holder.restaurantThumbnail.setImageResource(restaurants.get(position).getRestaurantThumbnail());
         holder.restaurantDescription.setText(restaurants.get(position).getRestaurantAddress());
 
         holder.homeCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Name: " + restaurants.get(position).getRestaurantName(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(context, RestaurantMealActivity.class);
-                context.startActivity(intent);
+                Log.d(TAG, "onClick: " + restaurants.get(position).getRestaurantName());
+                Toast.makeText(context, "" + restaurants.get(position).getRestaurantName(), Toast.LENGTH_SHORT).show();
+                Intent getMenuIntent = new Intent(context, RestaurantMealActivity.class);
+                getMenuIntent.putExtra("restaurant", restaurants.get(position));
+                Log.d(TAG, "onClick: Adapter Id: " + restaurants.get(position).getRestaurantId());
+                Log.d(TAG, "onClick: R Name: " + restaurants.get(position).getRestaurantName());
+                Log.d(TAG, "onClick: desc: " + restaurants.get(position).getRestaurantAddress());
+                Log.d(TAG, "onClick: phone" + restaurants.get(position).getRestaurantPhone());
+                getMenuIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(getMenuIntent);
             }
         });
     }

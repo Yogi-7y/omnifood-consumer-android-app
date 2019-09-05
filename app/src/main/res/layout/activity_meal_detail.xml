@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MealDetailActivity">
+    tools:context=".Activities.MealDetailActivity">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -76,7 +76,7 @@
                         android:textColor="#000"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        android:id="@+id/food_name" />
+                        android:id="@+id/meal_detail_meal_name" />
 
                     <LinearLayout
                         android:id="@+id/meal_detail_price_linear_layout"
@@ -111,7 +111,7 @@
 
                         <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
                             android:id="@+id/meal_detail_number_button"
-                            app:backGroundColor="#fff"
+                            app:backGroundColor="#00ffff"
                             android:layout_marginTop="-10dp"
                             app:textColor="#000"
                             android:outlineProvider="bounds"
@@ -153,10 +153,10 @@
     </androidx.core.widget.NestedScrollView>
 
     <Button
-        android:id="@+id/meal_detail_add_to_cart"
+        android:id="@+id/meal_place_order_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add to cart"
+        android:text="Place Order"
         android:layout_gravity="bottom"
         android:background="#00ffff"
         android:textColor="#0000ff" />

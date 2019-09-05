@@ -1,16 +1,30 @@
 package com.omnifood.consumer.models;
 
-public class Meal {
+import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
+public class Meal implements Serializable {
+
+    @SerializedName("id")
+    private String mealId;
+    @SerializedName("meal")
     private String mealName;
+    @SerializedName("price")
     private String mealPrice;
+    @SerializedName("description")
     private String mealDescription;
-    private int mealThumbnail;
+    @SerializedName("image")
+    private String mealThumbnail;
+
+    public String getMealId() {
+        return mealId;
+    }
 
     public Meal() {
     }
 
-    public Meal(String mealName, String mealPrice, String mealDescription, int mealThumbnail) {
+    public Meal(String mealName, String mealPrice, String mealDescription, String mealThumbnail) {
         this.mealName = mealName;
         this.mealPrice = mealPrice;
         this.mealDescription = mealDescription;
@@ -41,11 +55,19 @@ public class Meal {
         this.mealDescription = mealDescription;
     }
 
-    public int getMealThumbnail() {
+    public String getMealThumbnail() {
         return mealThumbnail;
     }
 
-    public void setMealThumbnail(int mealThumbnail) {
+    public Meal(String mealId, String mealName, String mealPrice, String mealDescription, String mealThumbnail) {
+        this.mealId = mealId;
+        this.mealName = mealName;
+        this.mealPrice = mealPrice;
+        this.mealDescription = mealDescription;
+        this.mealThumbnail = mealThumbnail;
+    }
+
+    public void setMealThumbnail(String mealThumbnail) {
         this.mealThumbnail = mealThumbnail;
     }
 }

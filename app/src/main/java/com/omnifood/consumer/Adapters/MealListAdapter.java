@@ -15,13 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.google.android.material.card.MaterialCardView;
-import com.omnifood.consumer.MealDetailActivity;
+import com.omnifood.consumer.Activities.MealDetailActivity;
 import com.omnifood.consumer.R;
-import com.omnifood.consumer.RestaurantMealActivity;
 import com.omnifood.consumer.models.Meal;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +25,7 @@ import java.util.List;
 public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealListViewHolder> {
     private static final String TAG = "MealListAdapter";
 
-    private List<Meal> meals;
+    private ArrayList<Meal> meals;
     private Context context;
 
     public MealListAdapter(Context context, ArrayList<Meal> meals ) {
@@ -45,10 +41,13 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealLi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final MealListViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final MealListViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder: called.");
 
-        holder.mealListImage.setImageResource(meals.get(position).getMealThumbnail());
+        Glide.with(context)
+                .asBitmap()
+                .load(meals.get(position).getMealThumbnail())
+                .into(holder.mealListImage);
         holder.mealListDescription.setText(meals.get(position).getMealDescription());
         holder.mealListPrice.setText(meals.get(position).getMealPrice());
         holder.mealListName.setText(meals.get(position).getMealName());
@@ -57,9 +56,10 @@ public class MealListAdapter extends RecyclerView.Adapter<MealListAdapter.MealLi
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "Name: " + holder.mealListName.getText().toString().trim(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(context, MealDetailActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
+                Intent mealDetailIntent = new Intent(context, MealDetailActivity.class);
+                mealDetailIntent.putExtra("mealDetail", meals.get(position));
+                mealDetailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(mealDetailIntent);
             }
         });
     }

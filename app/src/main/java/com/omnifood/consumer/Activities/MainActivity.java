@@ -1,4 +1,4 @@
-package com.omnifood.consumer;
+package com.omnifood.consumer.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,11 +7,12 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.omnifood.consumer.R;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private final int SPLASH_DISPLAY_LENGTH = 4000;
+    private final int SPLASH_DISPLAY_LENGTH = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
