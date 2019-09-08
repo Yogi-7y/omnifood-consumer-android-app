@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,7 @@ import com.omnifood.consumer.Adapters.SliderAdapter;
 import com.omnifood.consumer.OmnifoodApi;
 import com.omnifood.consumer.R;
 import com.omnifood.consumer.models.Restaurant;
+import com.omnifood.consumer.models.Token;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
@@ -54,7 +56,9 @@ public class HomeActivity extends AppCompatActivity {
         sliderView.setScrollTimeInSec(4); //set scroll delay in seconds :
         sliderView.startAutoCycle();
 
-
+        Intent intent = getIntent();
+        String token = intent.getStringExtra("token");
+        Log.d(TAG, "onCreate: Token: " + token);
         listRestaurants();
     }
 

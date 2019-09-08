@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -41,6 +42,14 @@ public class RestaurantMealActivity extends AppCompatActivity {
         Intent intent = getIntent();
         restaurant = (Restaurant) intent.getSerializableExtra("restaurant");
 
+        Log.d(TAG, "onCreate: Restaurant: " + restaurant.getRestaurantName());
+
+        SharedPreferences sharedPreferences = getSharedPreferences("restaurant", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(restaurant);
+        editor.putString("restaurant", json);
+        editor.apply();
 
         recyclerView = findViewById(R.id.restaurant_meal_recycler_view);
 

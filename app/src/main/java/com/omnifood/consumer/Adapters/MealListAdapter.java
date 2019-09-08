@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.omnifood.consumer.Activities.MealDetailActivity;
+import com.omnifood.consumer.Activities.RestaurantMealActivity;
 import com.omnifood.consumer.R;
 import com.omnifood.consumer.models.Meal;
 

@@ -32,11 +32,13 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/meal_detail_toolbar"
-                app:title="Food Name"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:layout_collapseMode="parallax"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize" />
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="parallax"
+                app:popupTheme="@style/AppTheme"
+                app:title="Food Name"
+                app:titleTextColor="#000" />
+
 
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -111,7 +113,7 @@
 
                         <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
                             android:id="@+id/meal_detail_number_button"
-                            app:backGroundColor="#00ffff"
+                            app:backGroundColor="#fff"
                             android:layout_marginTop="-10dp"
                             app:textColor="#000"
                             android:outlineProvider="bounds"

@@ -3,12 +3,14 @@ package com.omnifood.consumer.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.gson.Gson;
 import com.omnifood.consumer.OmnifoodApi;
 import com.omnifood.consumer.R;
 import com.omnifood.consumer.models.Consumer;
@@ -33,7 +35,7 @@ public class CompleteProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complete_profile);
 
-        Intent getRegisteredUserIntent = getIntent();
+        final Intent getRegisteredUserIntent = getIntent();
         final User user = (User) getRegisteredUserIntent.getSerializableExtra("registeredUser");
 
         textInputLayoutPhoneNumber = findViewById(R.id.complete_phone_number);
@@ -71,6 +73,12 @@ public class CompleteProfileActivity extends AppCompatActivity {
                             Consumer consumer = response.body();
                             Toast.makeText(CompleteProfileActivity.this, "Successful...", Toast.LENGTH_SHORT).show();
 
+                            SharedPreferences sharedPreferences = getSharedPreferences("consumer", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            Gson gson = new Gson();
+                            String json = gson.toJson(consumer);
+                            editor.putString("consumer", json);
+                            editor.apply();
 
                             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                             startActivity(intent);

@@ -32,8 +32,12 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.SliderAdapter
 
         switch (position) {
             case 0:
-                viewHolder.sliderImage.setImageResource(R.drawable.three);
-                viewHolder.sliderDescription.setText("Fasoos");
+//                viewHolder.sliderImage.setImageResource(R.drawable.three);
+                Glide.with(context)
+                        .asBitmap()
+                        .load("http://192.168.0.4:8000/media/meal_image/burger_meal.jpg")
+                        .into(viewHolder.sliderImage);
+                viewHolder.sliderDescription.setText("Exotic Flavours");
                 break;
             case 1:
                 Glide.with(viewHolder.itemView)

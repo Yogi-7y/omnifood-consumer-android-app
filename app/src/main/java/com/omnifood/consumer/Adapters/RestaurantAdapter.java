@@ -2,6 +2,7 @@ package com.omnifood.consumer.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,8 +62,10 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
                 Log.d(TAG, "onClick: R Name: " + restaurants.get(position).getRestaurantName());
                 Log.d(TAG, "onClick: desc: " + restaurants.get(position).getRestaurantAddress());
                 Log.d(TAG, "onClick: phone" + restaurants.get(position).getRestaurantPhone());
+                getMenuIntent.putExtra("restaurant", restaurants.get(position));
                 getMenuIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(getMenuIntent);
+
             }
         });
     }
